@@ -42,6 +42,7 @@ GEM
       multi_json
     arel (6.0.0)
     awesome_print (1.6.1)
+    bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bourbon (4.2.1)
@@ -133,6 +134,10 @@ GEM
     mime-types (2.4.3)
     mini_portile (0.6.2)
     minitest (5.5.1)
+    monban (0.1.1)
+      bcrypt
+      rails
+      warden
     multi_json (1.11.0)
     neat (1.7.2)
       bourbon (>= 4.0)
@@ -244,6 +249,8 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    warden (1.2.3)
+      rack (>= 1.0)
     web-console (2.1.2)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -277,6 +284,7 @@ DEPENDENCIES
   i18n-tasks
   jquery-rails
   launchy
+  monban
   neat (~> 1.7.0)
   newrelic_rpm
   normalize-rails (~> 3.0.0)
