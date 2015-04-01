@@ -1,0 +1,6 @@
+<%= simple_form_for post, html: { class: "js-blog-form" } do |f|%>
+  <%= f.input :title %>
+  <%= f.input :content, input_html: { class: "js-content" } %>
+  <div class="epiceditor" id="epiceditor"></div>
+  <%= f.submit %>
+<% end %>
