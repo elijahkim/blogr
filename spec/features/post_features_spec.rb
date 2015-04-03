@@ -11,8 +11,43 @@ RSpec.feature "crudding posts" do
     set_post_body("# This is my blog post")
     click_on "Create Post"
 
-    within("#flash"){ expect(page).to have_content("Post created successfully") }
+    expect_flash_with_content("Post created successfully")
     expect(page).to have_content("This is my blog post")
+  end
+
+  scenario "As a guest I cannot create a post" do
+    visit new_post_path
+    expect_flash_with_content(
+      "You cannot create posts!"
+    )
+  end
+
+  scenario "As a guest I cannot edit a post" do
+    post = create(:post)
+    visit edit_post_path(post)
+
+    expect_flash_with_content(
+      "You cannot edit this post!"
+    )
+  end
+
+  scenario "As a user I cannot edit other people's posts" do
+    post = create(:post)
+    visit edit_post_path(post)
+
+    expect_flash_with_content(
+      "You cannot edit this post!"
+    )
+  end
+
+  scenario "As a user I cannot delete other people's posts" do
+    post = create(:post)
+    visit post_path(post)
+    click_on "Delete Post"
+
+    expect_flash_with_content(
+      "You cannot delete this post!"
+    )
   end
 
   scenario "As a user I can see a post" do
@@ -33,9 +68,7 @@ RSpec.feature "crudding posts" do
     click_on "Update Post"
 
     expect(page).to have_content("This is edited")
-    within("#flash") do
-      expect(page).to have_content("Post updated successfully")
-    end
+    expect_flash_with_content("Post updated successfully")
   end
 
   scenario "As a post owner I can delete a post", :js do
@@ -46,12 +79,16 @@ RSpec.feature "crudding posts" do
     page.accept_confirm { click_on "Delete Post" }
 
     expect(page).to_not have_content(post.title)
-    within("#flash") do
-      expect(page).to have_content("Post deleted successfully")
-    end
+    expect_flash_with_content("Post deleted successfully")
   end
 
   def set_post_body(content)
     page.execute_script("editor.importFile(null, '#{content}')")
+  end
+
+  def expect_flash_with_content(content)
+    within("#flash") do
+      expect(page).to have_content(content)
+    end
   end
 end

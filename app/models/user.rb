@@ -3,4 +3,8 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: true
 
   has_many :posts
+
+  def signed_in?
+    email != "Guest"
+  end
 end
