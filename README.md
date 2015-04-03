@@ -1,5 +1,9 @@
 # Bloggr
 
+[![Circle CI](https://circleci.com/gh/elijahkim/blogr.svg?style=svg)](https://circleci.com/gh/elijahkim/blogr)
+[![Code Climate](https://codeclimate.com/github/elijahkim/blogr/badges/gpa.svg)](https://codeclimate.com/github/elijahkim/blogr)
+[![Test Coverage](https://codeclimate.com/github/elijahkim/blogr/badges/coverage.svg)](https://codeclimate.com/github/elijahkim/blogr)
+
 ## Getting Started
 
 After you have cloned this repo, run this setup script to set up your machine

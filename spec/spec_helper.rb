@@ -1,3 +1,5 @@
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
 require "webmock/rspec"
 
 # http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
@@ -14,4 +16,7 @@ RSpec.configure do |config|
   config.order = :random
 end
 
-WebMock.disable_net_connect!(allow_localhost: true)
+WebMock.disable_net_connect!(
+  allow_localhost: true,
+  allow: [/codeclimate/]
+)
