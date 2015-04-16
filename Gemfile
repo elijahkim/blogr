@@ -19,6 +19,7 @@ gem "normalize-rails", "~> 3.0.0"
 gem "pg"
 gem "rack-timeout"
 gem "rails", "4.2.0"
+gem 'react-rails', '~> 1.0'
 gem "recipient_interceptor"
 gem "redcarpet"
 gem "refills"
